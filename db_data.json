@@ -47,7 +47,7 @@
   "fields": {
     "description": "Write essay for the english class",
     "created_at": "2024-07-24T08:25:19.908Z",
-    "deadline": "2024-07-26T11:25:00Z",
+    "deadline": null,
     "is_completed": false,
     "tags": [
       1,

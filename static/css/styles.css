@@ -1,0 +1,30 @@
+body {
+    margin-top: 20px;
+}
+
+.link-to-page {
+    float: right;
+    margin: 0 2px 0 2px;
+}
+
+.page-item-list {
+    display: block;
+    padding-top: 2rem;
+    align-items: center;
+}
+
+.task-done {
+    color: #029d02;
+}
+
+.task-not-done {
+    color: #d90022;
+}
+
+.deadline {
+    color: #640010;
+}
+
+.tag-list {
+    color: #a6a6a6;
+}

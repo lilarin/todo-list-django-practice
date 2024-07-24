@@ -11,7 +11,7 @@ class Tag(models.Model):
 class Task(models.Model):
     description = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    deadline = models.DateTimeField()
+    deadline = models.DateTimeField(null=True, blank=True)
     is_completed = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, blank=True)
 

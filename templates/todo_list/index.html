@@ -28,7 +28,7 @@
         </h4>
         <p class="publish-date">
           Created: {{ task.created_at }}
-          {% if not task.is_completed %}
+          {% if not task.is_completed and task.deadline %}
             <strong class="deadline">Deadline: {{ task.deadline }}</strong>
           {% endif %}
         </p>

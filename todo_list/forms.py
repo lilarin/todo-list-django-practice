@@ -14,7 +14,7 @@ class TaskForm(forms.ModelForm):
                 "type": "datetime-local",
             }
         ),
-        required=True,
+        required=False,
     )
 
     class Meta:

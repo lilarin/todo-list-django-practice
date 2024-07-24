@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>
+    Tags
+    <a class="btn btn-primary link-to-page" href="{% url 'todo_list:tag-create' %}">Add</a>
+  </h1>
+
+  {% if literary_format_list %}
+    <table class="table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {% for literary_format in literary_format_list %}
+        <tr>
+          <td>
+            {{ literary_format.id }}
+          </td>
+          <td>
+            {{ literary_format.name }}
+          </td>
+          <td>
+            <a style="text-decoration: none" href="{% url 'catalog:literary-format-update' literary_format.id %}">Update</a>
+          </td>
+          <td>
+            <a style="text-decoration: none" href="{% url 'catalog:literary-format-delete' literary_format.id %}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no literary formats</p>
+  {% endif %}
+{% endblock %}

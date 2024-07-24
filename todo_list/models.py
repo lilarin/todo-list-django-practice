@@ -11,11 +11,9 @@ class Tag(models.Model):
 class Task(models.Model):
     description = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    deadline = models.DateField()
+    deadline = models.DateTimeField()
     is_completed = models.BooleanField(default=False)
-    tags = models.ManyToManyField(
-        Tag, blank=True
-    )
+    tags = models.ManyToManyField(Tag, blank=True)
 
     class Meta:
         ordering = ("-created_at",)

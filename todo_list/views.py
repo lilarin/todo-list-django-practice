@@ -1,9 +1,12 @@
-from django.http import HttpRequest, HttpResponseRedirect, HttpResponse
+from django.http import (
+    HttpRequest,
+    HttpResponseRedirect,
+    HttpResponse
+)
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
-
-from todo_list.forms import TaskCreationForm
+from todo_list.forms import TaskForm
 from todo_list.models import Task, Tag
 
 
@@ -16,13 +19,13 @@ class IndexListView(generic.ListView):
 
 class TaskCreateView(generic.CreateView):
     model = Task
-    form_class = TaskCreationForm
+    form_class = TaskForm
     success_url = reverse_lazy("todo_list:index")
 
 
 class TaskUpdateView(generic.UpdateView):
     model = Task
-    fields = "__all__"
+    form_class = TaskForm
     success_url = reverse_lazy("todo_list:index")
 
 
@@ -55,10 +58,11 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todo_list:tag-list")
 
 
-def toggle_task_status(request: HttpRequest, pk: int) -> HttpResponse:
+def toggle_task_status(
+        request: HttpRequest,
+        pk: int
+) -> HttpResponse:
     task = get_object_or_404(Task, pk=pk)
     task.is_completed = not task.is_completed
     task.save()
-    return HttpResponseRedirect(
-        reverse_lazy("todo_list:index")
-    )
+    return HttpResponseRedirect(reverse_lazy("todo_list:index"))

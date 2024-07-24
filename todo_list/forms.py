@@ -1,18 +1,17 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from todo_list.models import Task, Tag
 
 
-class TaskCreationForm(forms.ModelForm):
+class TaskForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(
         queryset=Tag.objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        required=True
+        required=False
     )
-    deadline = forms.DateField(
-        widget=forms.DateInput(
+    deadline = forms.DateTimeField(
+        widget=forms.DateTimeInput(
             attrs={
-                "type": "date",
+                "type": "datetime-local",
             }
         ),
         required=True,
